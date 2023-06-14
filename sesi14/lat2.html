@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Latihan jquery 2</title>
+</head>
+<body>
+    <div class="container">
+    <h3>Menghitung Luas</h3>
+    <div>
+        <button type="button" class="C1"class="btn btn-primary">persegi</button>
+        <button type="button" class="C2" class="btn btn-primary">segitiga</button>
+    </div>
+    <div id="persegi">
+        <div>
+            Nilai panjang
+                <input type="number" class="PJ form-control">
+        </div>
+        <div>
+            Nilai lebar
+                <input type="number" class="LB form-control">
+        </div>
+        <div>
+            <button type="button" class="HitungPersegi">hitung luas</button>
+        </div>
+    </div>
+    <div id="segitiga">
+        <div>
+            Nilai alas
+                <input type="number" class="AL form-control">
+        </div>
+        <div>
+            Nilai tinggi
+                <input type="number" class="TG form-control">
+        </div>
+        <div>
+            <button type="button" class="HitungSegitiga">hitung luas</button>
+        </div>
+    </div>
+    <div id="hasil"></div>
+    </div>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#persegi").hide();
+            $("#segitiga").hide();
+
+            $(".C1").click(function(){
+                $("h3").html("hitung luas persegi");
+                $("#persegi").show();
+                $("#segitiga").hide();
+                $("#hasil").html("");            
+            });
+
+            $(".C2").click(function(){
+                $("h3").html("hitung luas segitiga");
+                $("#segitiga").show();
+                $("#persegi").hide();
+                $("#hasil").html("");            
+            });
+            $(".HitungPersegi").click(function(){
+                //input
+                let P = $(".PJ").val();
+                let L = $(".LB").val();
+                //proses
+                let LU = P*L;
+                //output
+                let tx = "nilai luas dari persegi dengan panjang"+P;
+                tx += " dan lebar"+L+" adalah: <br>";
+                tx += "Luas = Panjang X Lebar <br>";
+                tx += "="+P+" X "+L+"<br";
+                tx += "= "+LU+"<br>jadi luasnya adalah "+LU;
+
+                $("#hasil").html(tx);
+            });
+
+            $(".HitungSegitiga").click(function(){
+                //input
+                let A = $(".AL").val();
+                let T = $(".TG").val();
+                //proses
+                let LU = 0.5*A*T;
+                //output
+                let tx = "nilai luas dari segitiga dengan alas"+A;
+                tx += " dan tinggi"+T+" adalah: <br>";
+                tx += "Luas =1/2 Alas X Tinggi <br>";
+                tx += "= "+0.5*A+" X "+T+"<br";
+                tx += "= "+LU+"<br>jadi luasnya adalah "+LU;
+
+                $("#hasil").html(tx);
+            });
+        });
+    </script>
+</body>
+</html>
